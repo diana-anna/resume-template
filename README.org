@@ -1,0 +1,3 @@
+* resume-template
+
+LaTeX class file that can be used as a template to write a resume.
