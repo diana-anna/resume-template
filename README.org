@@ -1,3 +1,7 @@
 * resume-template
 
 LaTeX class file that can be used as a template to write a resume.
+
+** Compiling
+
+You will need to use ~xelatex~ to compile ~.tex~ files that use this class.
