@@ -62,16 +62,16 @@
   \noindent
   %\vspace*{.5em}
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
-    \textbf{#1} & {#3} \\
-    \textit{#2} & \textit{#4}  \faMapMarker*
-  \end{tabular*}
+    \textbf{#1} & {#3} \faMapMarker* \\
+    \textit{#2} & \textit{#4}    
+\end{tabular*}
 }
 
 \NewDocumentCommand{\jobInfoSameCompany}{m m}{
   \noindent
   % \vspace*{.5em}
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
-    \textit{#2} & \textit{#4}  \faMapMarker*
+    \textit{#1} & \textit{#2}
   \end{tabular*}
 }
 
