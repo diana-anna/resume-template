@@ -1,3 +1,10 @@
+#+PROPERTY: header-args :tangle resume.cls
+
+* Resume Template
+
+** Setup
+
+#+BEGIN_SRC latex
 \ProvidesClass{resume}
 \LoadClass[10pt, letterpaper]{article}
 
@@ -25,7 +32,23 @@
 }
 
 \setlist[itemize]{itemsep=0em}
+#+END_SRC
 
+** Header
+
+The first 5 lines define formatting for special links. These lines are used by
+the ~header~ command to display these special links.
+
+*** Header Arguments
+
+1. name
+2. location
+3. website
+4. email
+5. GitHub username
+6. LinkedIn profile path (without the ~linkedin.com/in/~)
+
+#+begin_src latex
 \newcommand*{\email}[1]{\href{mailto:#1}{\texttt#1}}
 \newcommand*{\github}[1]{\href{https://github.com/#1}{\texttt#1}}
 \newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\texttt#1}}
@@ -42,7 +65,24 @@
                                                               &  \faLinkedin{} & \linkedin{#6} \\
   \end{tabular*}
 }
+#+end_src
 
+** Sections
+
+Each of the following commands will create a new subtitle under a section. After
+this command, add items underneath to create bullet points.
+
+*** Section
+
+Run this command before adding an education, job experience, or project section.
+If adding multiple of one section, only add this once, before the first
+sub-section.
+
+**** Argument
+
+1. section name
+
+#+begin_src latex
 \NewDocumentCommand{\resumeSection}{m}{
   %\vspace{-1em}
   \section{\textbf{#1}}
@@ -50,14 +90,36 @@
   \hrule
   \vspace*{.5em}
 }
+#+end_src
 
-\NewDocumentCommand{\educationInfo}{m m m O{}}{
-  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
-    \textbf{#1} & {#3} \\
-    {#2} & {#4}
-  \end{tabular*}
-}
+*** Education
 
+**** Arguments
+
+1. university
+2. degree
+3. graduation date
+4. GPA (optional)
+
+#+BEGIN_SRC latex
+  \NewDocumentCommand{\educationInfo}{m m m O{}}{
+    \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+      \textbf{#1} & {#3} \\
+      {#2} & {#4}
+    \end{tabular*}
+  }
+#+END_SRC
+
+*** Job Experience
+
+**** Arguments
+
+1. company
+2. position
+3. location
+4. employment dates
+
+#+BEGIN_SRC latex
 \NewDocumentCommand{\jobInfo}{m m m m}{
   \noindent
   %\vspace*{.5em}
@@ -66,7 +128,19 @@
     \textit{#2} & \textit{#4}
   \end{tabular*}
 }
+#+END_SRC
 
+*** Job Experience (Same Company, Different Position)
+
+This section is very similar to the Job Experience section from above, but does
+not list the company name and location.
+
+**** Arguments
+
+1. position
+2. employment dates
+
+#+BEGIN_SRC latex
 \NewDocumentCommand{\jobInfoSameCompany}{m m}{
   \noindent
   % \vspace*{.5em}
@@ -74,9 +148,19 @@
     \textit{#1} & \textit{#2}
   \end{tabular*}
 }
+#+END_SRC
 
+*** Projects
+
+**** Arguments
+
+1. project name
+2. project dates
+
+#+begin_src latex
 \NewDocumentCommand{\projectInfo}{m m}{
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
     \textbf{#1} & {#2}
   \end{tabular*}
 }
+#+end_src
