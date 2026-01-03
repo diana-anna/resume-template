@@ -23,6 +23,16 @@
         my-fonts = with pkgs; [ ibm-plex lato ];
         # Generate a font configuration file that includes these fonts
         fonts-conf = pkgs.makeFontsConf { fontDirectories = my-fonts; };
+        make-pdf = pkgs.writeShellScriptBin "make-pdf" ''
+          latexmk -pdf -xelatex ${filename}.tex
+        '';
+        make-clean = pkgs.writeShellScriptBin "make-clean" ''
+          latexmk -c
+        '';
+        make-clean-pdf = pkgs.writeShellScriptBin "make-clean-pdf" ''
+          latexmk -pdf -xelatex ${filename}.tex
+          latexmk -c
+        '';
       in {
         packages.default = pkgs.stdenvNoCC.mkDerivation {
           name = "resume";
@@ -42,7 +52,8 @@
           shellHook = ''
             export FONTCONFIG_FILE=${fonts-conf}
           '';
-          packages = [ tex ] ++ my-fonts;
+          packages = [ tex make-pdf make-clean make-clean-pdf ] ++ my-fonts;
+
         };
         apps.default = let
           myScriptPkg = pkgs.writeShellScriptBin "my-program" ''
