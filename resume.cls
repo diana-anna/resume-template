@@ -8,6 +8,9 @@
 \RequirePackage{fontawesome5}
 \RequirePackage{multirow}
 \RequirePackage{enumitem}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
+\setmainfont{Lato}
 \pagestyle{empty}
 
 \titleformat{\section}
@@ -26,11 +29,11 @@
 
 \setlist[itemize]{itemsep=0em}
 
-\newcommand*{\email}[1]{\href{mailto:#1}{\texttt#1}}
-\newcommand*{\github}[1]{\href{https://github.com/#1}{\texttt#1}}
-\newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\texttt#1}}
+\newcommand*{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand*{\github}[1]{\href{https://github.com/#1}{\texttt{#1}}}
+\newcommand*{\linkedin}[1]{\href{https://linkedin.com/in/#1}{\texttt{#1}}}
 \newcommand*{\location}[1]{#1}
-\newcommand*{\website}[1]{\href{https://#1}{\texttt#1}}
+\newcommand*{\website}[1]{\href{https://#1}{\texttt{#1}}}
 
 \NewDocumentCommand{\header}{m m m m m m}{
   \noindent
