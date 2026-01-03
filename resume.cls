@@ -10,6 +10,7 @@
 \RequirePackage{enumitem}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fontspec}
+
 \setmainfont{Lato}
 \pagestyle{empty}
 
